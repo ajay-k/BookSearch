@@ -15,6 +15,7 @@
 		C82CF85F21C5B8F600A3FC52 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C82CF85E21C5B8F600A3FC52 /* main.m */; };
 		C82CF86921C5B8F600A3FC52 /* bookSearchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C82CF86821C5B8F600A3FC52 /* bookSearchTests.m */; };
 		C82CF87421C5B8F600A3FC52 /* bookSearchUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = C82CF87321C5B8F600A3FC52 /* bookSearchUITests.m */; };
+		C82CF88321C852F600A3FC52 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C82CF88221C852F600A3FC52 /* TableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,8 @@
 		C82CF86F21C5B8F600A3FC52 /* bookSearchUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bookSearchUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C82CF87321C5B8F600A3FC52 /* bookSearchUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = bookSearchUITests.m; sourceTree = "<group>"; };
 		C82CF87521C5B8F600A3FC52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C82CF88121C852F600A3FC52 /* TableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
+		C82CF88221C852F600A3FC52 /* TableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +109,8 @@
 				C82CF85221C5B8F600A3FC52 /* ViewController.h */,
 				C82CF85321C5B8F600A3FC52 /* ViewController.m */,
 				C82CF85521C5B8F600A3FC52 /* Main.storyboard */,
+				C82CF88121C852F600A3FC52 /* TableViewController.h */,
+				C82CF88221C852F600A3FC52 /* TableViewController.m */,
 				C82CF85821C5B8F600A3FC52 /* Assets.xcassets */,
 				C82CF85A21C5B8F600A3FC52 /* LaunchScreen.storyboard */,
 				C82CF85D21C5B8F600A3FC52 /* Info.plist */,
@@ -268,6 +273,7 @@
 				C82CF85421C5B8F600A3FC52 /* ViewController.m in Sources */,
 				C82CF85F21C5B8F600A3FC52 /* main.m in Sources */,
 				C82CF85121C5B8F600A3FC52 /* AppDelegate.m in Sources */,
+				C82CF88321C852F600A3FC52 /* TableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
