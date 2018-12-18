@@ -16,6 +16,8 @@
 		C82CF86921C5B8F600A3FC52 /* bookSearchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C82CF86821C5B8F600A3FC52 /* bookSearchTests.m */; };
 		C82CF87421C5B8F600A3FC52 /* bookSearchUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = C82CF87321C5B8F600A3FC52 /* bookSearchUITests.m */; };
 		C82CF88321C852F600A3FC52 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C82CF88221C852F600A3FC52 /* TableViewController.m */; };
+		C82CF88C21C8C0CB00A3FC52 /* BookMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = C82CF88B21C8C0CB00A3FC52 /* BookMetadata.m */; };
+		C82CF89521C986BD00A3FC52 /* BookDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C82CF89421C986BD00A3FC52 /* BookDataViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +56,10 @@
 		C82CF87521C5B8F600A3FC52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C82CF88121C852F600A3FC52 /* TableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
 		C82CF88221C852F600A3FC52 /* TableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
+		C82CF88A21C8C0CB00A3FC52 /* BookMetadata.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BookMetadata.h; sourceTree = "<group>"; };
+		C82CF88B21C8C0CB00A3FC52 /* BookMetadata.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BookMetadata.m; sourceTree = "<group>"; };
+		C82CF89321C986BD00A3FC52 /* BookDataViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BookDataViewController.h; sourceTree = "<group>"; };
+		C82CF89421C986BD00A3FC52 /* BookDataViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BookDataViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +117,10 @@
 				C82CF85521C5B8F600A3FC52 /* Main.storyboard */,
 				C82CF88121C852F600A3FC52 /* TableViewController.h */,
 				C82CF88221C852F600A3FC52 /* TableViewController.m */,
+				C82CF88A21C8C0CB00A3FC52 /* BookMetadata.h */,
+				C82CF88B21C8C0CB00A3FC52 /* BookMetadata.m */,
+				C82CF89321C986BD00A3FC52 /* BookDataViewController.h */,
+				C82CF89421C986BD00A3FC52 /* BookDataViewController.m */,
 				C82CF85821C5B8F600A3FC52 /* Assets.xcassets */,
 				C82CF85A21C5B8F600A3FC52 /* LaunchScreen.storyboard */,
 				C82CF85D21C5B8F600A3FC52 /* Info.plist */,
@@ -273,7 +283,9 @@
 				C82CF85421C5B8F600A3FC52 /* ViewController.m in Sources */,
 				C82CF85F21C5B8F600A3FC52 /* main.m in Sources */,
 				C82CF85121C5B8F600A3FC52 /* AppDelegate.m in Sources */,
+				C82CF89521C986BD00A3FC52 /* BookDataViewController.m in Sources */,
 				C82CF88321C852F600A3FC52 /* TableViewController.m in Sources */,
+				C82CF88C21C8C0CB00A3FC52 /* BookMetadata.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

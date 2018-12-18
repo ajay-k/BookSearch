@@ -12,7 +12,6 @@
 
 @property (weak,nonatomic) NSString *introString;
 @property(strong, nonatomic, readwrite) NSMutableArray *bookArr;
-@property(nonatomic, readwrite) id myNum;
 
 
 

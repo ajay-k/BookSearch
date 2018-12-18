@@ -7,6 +7,8 @@
 //
 
 #import "TableViewController.h"
+#import "BookMetadata.h"
+#import "BookDataViewController.h"
 
 
 
@@ -56,9 +58,9 @@
         
         NSLog(@"Finished fetching books");
         
-//        NSString *dummyString = [[NSString alloc] initWithData:(data) encoding:(NSUTF8StringEncoding)];
+        NSString *dummyString = [[NSString alloc] initWithData:(data) encoding:(NSUTF8StringEncoding)];
 //        
-//        NSLog(@"Dummy string: %@", dummyString);
+        NSLog(@"Dummy string: %@", dummyString);
         
         NSError *err;
         
@@ -72,49 +74,21 @@
             return;
         }
         
-        
-        // NSArray *arrayOfJSON = [allDataDictionary objectForKey:@"trackName"];
-        
-        //create dict and save data and display it on console
-        
-//        for (NSString *tempObject in booksJSON ) {
-//            // NSLog(@"Object: %@", [booksJSON objectForKey:tempObject]);
-//            //NSString *trackName = booksJSON[@"trackName"];
-//            //NSLog(@"%@",[booksJSON objectForKey:@"result"]);
-//            //NSLog(trackName);
-//
-//            //NSLog(@"Object: %@, Key: %@", [booksJSON valueForKey:tempObject], tempObject);
-//        }
-//
-        //NSLog(@"DEC");
-        
         for (NSDictionary *bookDict in booksJSON[@"results"]) {
             //Book detail should at least the display the title, author, summary and an image.
-            
-            //NSString *trackName = [bookDict objectForKey:@"resultCount"];
-            //NSString *trackName = bookDict[@"trackName"];
-            //NSLog(trackName);
-            
-            //NSString *firstName = bookDict[@"trackName"];
-            //NSString *lastName = bookDict[@"artistName"];
-            
 
+            
             id trackName = bookDict[@"trackName"];
             id artistName = bookDict[@"artistName"];
-            id description = bookDict[@"description"];
+            id description = bookDict[@"artworkUrl60"];
             
+
+            BookMetadata *bookMetadata = [[BookMetadata alloc]initWithMetadata:bookDict[@"trackName"]
+                                       authorName:bookDict[@"artistName"]
+                                        imageURL:bookDict[@"artworkUrl60"]
+                                          trackID:bookDict[@"trackId"]];
             
-            //[bookArray addObject: bookDict[@"trackName"]];
-            
-            [_bookArr addObject:trackName];
-            
-            //NSLog(_myNum);
-            
-            NSLog(trackName);
-            NSLog(artistName);
-            NSLog(description);
-            //NSLog(@"-----------------------------");
-            
+             [_bookArr addObject:bookMetadata];
             
         }
         
@@ -141,6 +115,33 @@
     return _bookArr.count;
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    // Make sure your segue name in storyboard is the same as this line
+    if ([[segue identifier] isEqualToString:@"bookDetailSegue"])
+    {
+        // Get reference to the destination view controller
+        
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        BookDataViewController *bdvc = segue.destinationViewController;
+
+        // Pass any objects to the view controller here, like...
+        
+        //[bdvc.bookTitle setMyObjectHere:bookMetaData];
+        BookMetadata *bookMetadata = ((BookMetadata *)[_bookArr objectAtIndex:indexPath.row]);
+        bdvc.bookTitle = bookMetadata.bookTitle;
+        
+    }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+   
+    BookMetadata *bookMetadata = ((BookMetadata *)[_bookArr objectAtIndex:indexPath.row]);
+    bookMetadata.trackID;
+    
+    
+}
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
@@ -148,8 +149,10 @@
     // Configure the cell...
     //cell.textLabel.text = devices[indexPath.row];
     //cell.textLabel.text = devices[indexPath.row];
-    cell.textLabel.text = [_bookArr objectAtIndex:indexPath.row];
+    BookMetadata *bookMetadata = ((BookMetadata *)[_bookArr objectAtIndex:indexPath.row]);
+    cell.textLabel.text = bookMetadata.bookTitle;
     
+    //create fields for UI and link
     return cell;
 }
 
