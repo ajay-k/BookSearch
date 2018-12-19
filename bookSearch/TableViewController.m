@@ -62,11 +62,12 @@
         id artistName = bookDict[@"artistName"];
         id description = bookDict[@"artworkUrl60"];
         
-
+        
         BookMetadata *bookMetadata = [[BookMetadata alloc]initWithMetadata:bookDict[@"trackName"]
-                                   authorName:bookDict[@"artistName"]
-                                    imageURL:bookDict[@"artworkUrl60"]
-                                      summary:bookDict[@"description"]];
+                                                                 authorName:bookDict[@"artistName"]
+                                                                   imageURL:bookDict[@"artworkUrl60"]
+                                                                    summary:bookDict[@"description"]
+                                                                     rating:[bookDict[@"averageUserRating"] doubleValue]];
         
          [_bookArr addObject:bookMetadata];
         
@@ -113,6 +114,7 @@
         bdvc.authorName = bookMetadata.authorName;
         bdvc.summary = bookMetadata.summary;
         bdvc.imgURL = bookMetadata.imageURL;
+        bdvc.rating = bookMetadata.rating;
         
     }
 }

@@ -21,6 +21,8 @@
 @synthesize summaryTextView;
 @synthesize imgURL;
 @synthesize imgView;
+@synthesize rating;
+@synthesize ratingLabel;
 
 
 
@@ -32,6 +34,10 @@
     
     bookTitleLabel.text = bookTitle;
     authorNameLabel.text = authorName;
+    
+    NSString *ratingStr = [NSString stringWithFormat:@"%.02lf", rating];
+    ratingStr = [NSString stringWithFormat:@"%@ %@", @"Rating:", ratingStr];
+    ratingLabel.text = ratingStr;
     
     NSError *error = nil;
     NSAttributedString *attString = [[NSAttributedString alloc] initWithData:[summary dataUsingEncoding:NSUTF8StringEncoding] options:@{NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute:@(NSUTF8StringEncoding)} documentAttributes:nil error:&error];

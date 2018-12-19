@@ -22,4 +22,8 @@
 @property (nonatomic, strong) NSString *imgURL;
 @property (strong, nonatomic) IBOutlet UIImageView *imgView;
 
+@property (nonatomic) double rating;
+
+@property (strong, nonatomic) IBOutlet UILabel *ratingLabel;
+
 @end

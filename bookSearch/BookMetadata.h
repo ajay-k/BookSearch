@@ -14,10 +14,13 @@
 @property NSString *authorName;
 @property NSString *imageURL;
 @property NSString *summary;
+@property double rating;
+
 
 - (id)initWithMetadata:(NSString *)bookTitle
                authorName:(NSString *)anAuthorName
                imageURL:(NSString *)anImageUrl
-               summary:(NSString *)Asummary;
+               summary:(NSString *)Asummary
+               rating:(double)Arating;
 
 @end

@@ -13,13 +13,15 @@
 - (id)initWithMetadata:(NSString *)bookTitle
                authorName:(NSString *)anAuthorName
                imageURL:(NSString *)anImageUrl
-                summary:(NSString *)ASummary {
+                summary:(NSString *)ASummary
+                rating:(double)Arating {
     
     if ( self = [super init] ) {
         _bookTitle = bookTitle;
         _authorName = anAuthorName;
         _imageURL = anImageUrl;
         _summary = ASummary;
+        _rating = Arating;
     }
         
     return self;
