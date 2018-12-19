@@ -25,47 +25,6 @@
     
 }
 
-//- (void) fetchBooksUsingJSON {
-//
-//        NSString *searchTermText = self.searchTextField.text;
-//        NSString *urlString = [NSString stringWithFormat:@"https://itunes.apple.com/search?term=%@&entity=ebook", searchTermText];
-//        NSLog(@"Text search data:");
-//
-//
-//        NSURL *url = [NSURL URLWithString:urlString];
-//
-//        [[NSURLSession.sharedSession dataTaskWithURL:(url) completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-//
-//
-//        NSError *err;
-//
-//
-//
-//        NSDictionary *booksJSON = [NSJSONSerialization JSONObjectWithData:(data) options:NSJSONReadingAllowFragments error:(&err)];
-//
-//
-//        if (err) {
-//            NSLog(@"Failed to serialzie into JSON: %@", err);
-//            return;
-//        }
-//
-//
-//
-//
-//
-//        for (NSDictionary *bookDict in booksJSON[@"results"]) {
-//
-//            id trackName = bookDict[@"trackName"];
-//            id artistName = bookDict[@"artistName"];
-//            id description = bookDict[@"description"];
-//
-//            NSLog(trackName);
-//            NSLog(artistName);
-//            NSLog(description);
-//
-//        }
-//    }] resume];
-//}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -76,7 +35,7 @@
         TableViewController *tvc = segue.destinationViewController;
         
         // Pass any objects to the view controller here, like...
-         tvc.searchParam = self.searchTextField.text;
+         tvc.searchParam = searchTextField.text;
     }
 }
 
