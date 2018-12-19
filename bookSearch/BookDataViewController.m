@@ -24,13 +24,8 @@
 @synthesize rating;
 @synthesize ratingLabel;
 
-
-
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
     bookTitleLabel.text = bookTitle;
     authorNameLabel.text = authorName;
@@ -44,29 +39,15 @@
     if (error) {
         NSLog(@"Error: %@ %s %i", error.localizedDescription, __func__, __LINE__);
     } else {
-        // Clear text view
         summaryTextView.text = @"";
-        // Append the attributed string
         [summaryTextView.textStorage appendAttributedString:attString];
     }
-    
     
     imgView.image=[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imgURL]]];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

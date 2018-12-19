@@ -9,13 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface ViewController : UIViewController
-//@property(strong, nonatomic, readwrite) NSMutableArray *bookArr;
 
-
-@property (nonatomic, strong) NSString *searchTerm;
-@property (strong, nonatomic) IBOutlet UITextField *searchTextField;
-
-
+@property (strong, nonatomic) IBOutlet UITextField *searchTextBox;
 
 @end
-

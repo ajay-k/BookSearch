@@ -16,7 +16,6 @@
 @property NSString *summary;
 @property double rating;
 
-
 - (id)initWithMetadata:(NSString *)bookTitle
                authorName:(NSString *)anAuthorName
                imageURL:(NSString *)anImageUrl
