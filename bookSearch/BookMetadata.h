@@ -13,11 +13,11 @@
 @property NSString *bookTitle;
 @property NSString *authorName;
 @property NSString *imageURL;
-@property NSString *trackID;
+@property NSString *summary;
 
 - (id)initWithMetadata:(NSString *)bookTitle
                authorName:(NSString *)anAuthorName
                imageURL:(NSString *)anImageUrl
-               trackID:(NSString *) aTrackID;
+               summary:(NSString *)Asummary;
 
 @end

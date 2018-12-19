@@ -12,6 +12,10 @@
 //@property(strong, nonatomic, readwrite) NSMutableArray *bookArr;
 
 
+@property (nonatomic, strong) NSString *searchTerm;
+@property (strong, nonatomic) IBOutlet UITextField *searchTextField;
+
+
 
 @end
 

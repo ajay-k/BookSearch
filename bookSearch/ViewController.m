@@ -16,19 +16,22 @@
 
 @implementation ViewController
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    if([segue.identifier isEqualToString:@"hello"]){
-        
-        NSString *intro  = @"Hello my friend.";
-        TableViewController *tvc = [segue destinationViewController];
-        tvc.introString = intro;
-    }else if([segue.identifier isEqualToString:@"hola"]){
-        
-        NSString *intro  = @"Hello my friend.";
-        TableViewController *tvc = [segue destinationViewController];
-        tvc.introString = intro;
-    }
-}
+@synthesize searchTerm;
+@synthesize searchTextField;
+
+//-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+//    if([segue.identifier isEqualToString:@"hello"]){
+//        
+//        NSString *intro  = @"Hello my friend.";
+//        TableViewController *tvc = [segue destinationViewController];
+//        tvc.introString = intro;
+//    }else if([segue.identifier isEqualToString:@"hola"]){
+//        
+//        NSString *intro  = @"Hello my friend.";
+//        TableViewController *tvc = [segue destinationViewController];
+//        tvc.introString = intro;
+//    }
+//}
 
 
 - (void)viewDidLoad {
@@ -36,14 +39,22 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     //[self fetchBooksUsingJSON];
+    //[self fetchBooksUsingJSON];
+    
 }
 
 - (void) fetchBooksUsingJSON {
         NSLog(@"Fetching Books");
     
-        NSString *urlString = @"https://itunes.apple.com/search?term=fitzgerald&entity=ebook";
+        //NSString *urlString = @"https://itunes.apple.com/search?term=fitzgerald&entity=ebook";
         //NSString *urlString = @"https://api.letsbuildthatapp.com/jsondecodable/courses";
 
+    
+        NSString *searchTermText = self.searchTextField.text;
+        NSString *urlString = [NSString stringWithFormat:@"https://itunes.apple.com/search?term=%@&entity=ebook", searchTermText];
+        NSLog(@"Text search data:");
+    
+        //NSLog(final);
     
         NSURL *url = [NSURL URLWithString:urlString];
     
@@ -100,6 +111,31 @@
         }
     }] resume];
 }
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    // Make sure your segue name in storyboard is the same as this line
+    if ([[segue identifier] isEqualToString:@"tableViewSegue"])
+    {
+        // Get reference to the destination view controller
+        
+//        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        TableViewController *tvc = segue.destinationViewController;
+        
+        // Pass any objects to the view controller here, like...
+        
+        //[bdvc object:bookMetaData];
+        
+         tvc.searchParam = self.searchTextField.text;
+        
+//        BookMetadata *bookMetadata = ((BookMetadata *)[_bookArr objectAtIndex:indexPath.row]);
+//        bdvc.bookTitle = bookMetadata.bookTitle;
+//        bdvc.authorName = bookMetadata.authorName;
+//        bdvc.summary = bookMetadata.summary;
+        
+    }
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

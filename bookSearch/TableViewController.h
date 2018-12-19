@@ -11,6 +11,8 @@
 @interface TableViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (weak,nonatomic) NSString *introString;
+@property (weak,nonatomic) NSString *searchParam;
+
 @property(strong, nonatomic, readwrite) NSMutableArray *bookArr;
 
 

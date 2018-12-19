@@ -30,25 +30,44 @@
 
 @implementation TableViewController
 
-@synthesize introString; 
+@synthesize searchParam;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     //NSMutableArray *bookArray;
+    //NSLog(searchParam);
 
     
-    [self fetchBooksUsingJSON];
+    [self fetchBooksUsingJSON:searchParam];
     //devices = @[@"ABC", @"iPad",@"iMac", @"iWatch", @"iTV"];
 }
 
-- (void) fetchBooksUsingJSON {
+- (void)fetchBooksUsingJSON:(NSString *)searchParam {
     NSLog(@"Fetching Books");
 
     
     _bookArr = [NSMutableArray new];
 
-    NSString *urlString = @"https://itunes.apple.com/search?term=fitzgerald&entity=ebook";
+//    NSString *urlString = @"https://itunes.apple.com/search?term=the great gatsby &entity=ebook";
+//    
+    
+    //NSString *searchTermText = searchParam;
+    
+    //NSLog(searchParam);
+    //NSString *searchTermText = @"Harry";
+    NSString *urlString = [NSString stringWithFormat:@"https://itunes.apple.com/search?term=%@&entity=ebook", searchParam];
+    urlString= [urlString stringByReplacingOccurrencesOfString:@" " withString:@"+"];
+    NSLog(urlString);
+
+    //urlString = [urlString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+    //urlString = [urlString stringByAddingPercentEscapesUsingEncoding];
+
+    
+    NSLog(urlString);
+    
+
+
     //NSString *urlString = @"https://api.letsbuildthatapp.com/jsondecodable/courses";
     
     
@@ -58,9 +77,9 @@
         
         NSLog(@"Finished fetching books");
         
-        NSString *dummyString = [[NSString alloc] initWithData:(data) encoding:(NSUTF8StringEncoding)];
+       // NSString *dummyString = [[NSString alloc] initWithData:(data) encoding:(NSUTF8StringEncoding)];
 //        
-        NSLog(@"Dummy string: %@", dummyString);
+        //NSLog(@"Dummy string: %@", dummyString);
         
         NSError *err;
         
@@ -86,7 +105,7 @@
             BookMetadata *bookMetadata = [[BookMetadata alloc]initWithMetadata:bookDict[@"trackName"]
                                        authorName:bookDict[@"artistName"]
                                         imageURL:bookDict[@"artworkUrl60"]
-                                          trackID:bookDict[@"trackId"]];
+                                          summary:bookDict[@"description"]];
             
              [_bookArr addObject:bookMetadata];
             
@@ -127,9 +146,12 @@
 
         // Pass any objects to the view controller here, like...
         
-        //[bdvc.bookTitle setMyObjectHere:bookMetaData];
+        //[bdvc object:bookMetaData];
         BookMetadata *bookMetadata = ((BookMetadata *)[_bookArr objectAtIndex:indexPath.row]);
         bdvc.bookTitle = bookMetadata.bookTitle;
+        bdvc.authorName = bookMetadata.authorName;
+        bdvc.summary = bookMetadata.summary;
+        bdvc.imgURL = bookMetadata.imageURL;
         
     }
 }
@@ -137,7 +159,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
    
     BookMetadata *bookMetadata = ((BookMetadata *)[_bookArr objectAtIndex:indexPath.row]);
-    bookMetadata.trackID;
+    //bookMetadata.trackID;
     
     
 }

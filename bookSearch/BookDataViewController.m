@@ -13,14 +13,40 @@
 @end
 
 @implementation BookDataViewController
-@synthesize bookTitleLabel;
 @synthesize bookTitle;
+@synthesize bookTitleLabel;
+@synthesize authorName;
+@synthesize authorNameLabel;
+@synthesize summary;
+@synthesize summaryTextView;
+@synthesize imgURL;
+@synthesize imgView;
+
+
+
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
     bookTitleLabel.text = bookTitle;
+    authorNameLabel.text = authorName;
+    
+    NSError *error = nil;
+    NSAttributedString *attString = [[NSAttributedString alloc] initWithData:[summary dataUsingEncoding:NSUTF8StringEncoding] options:@{NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute:@(NSUTF8StringEncoding)} documentAttributes:nil error:&error];
+    if (error) {
+        NSLog(@"Error: %@ %s %i", error.localizedDescription, __func__, __LINE__);
+    } else {
+        // Clear text view
+        summaryTextView.text = @"";
+        // Append the attributed string
+        [summaryTextView.textStorage appendAttributedString:attString];
+    }
+    
+    //summaryTextView.text = summary;
+    
+    imgView.image=[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imgURL]]];
 }
 
 - (void)didReceiveMemoryWarning {

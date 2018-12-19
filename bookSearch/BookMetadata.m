@@ -13,13 +13,13 @@
 - (id)initWithMetadata:(NSString *)bookTitle
                authorName:(NSString *)anAuthorName
                imageURL:(NSString *)anImageUrl
-                trackID:(NSString *) aTrackID {
+                summary:(NSString *)ASummary {
     
     if ( self = [super init] ) {
         _bookTitle = bookTitle;
         _authorName = anAuthorName;
         _imageURL = anImageUrl;
-        _trackID = aTrackID;
+        _summary = ASummary;
     }
         
     return self;
