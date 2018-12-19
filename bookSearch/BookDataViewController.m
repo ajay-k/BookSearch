@@ -44,7 +44,6 @@
         [summaryTextView.textStorage appendAttributedString:attString];
     }
     
-    //summaryTextView.text = summary;
     
     imgView.image=[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imgURL]]];
 }

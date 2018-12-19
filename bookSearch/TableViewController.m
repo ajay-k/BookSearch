@@ -13,15 +13,8 @@
 
 
 @interface TableViewController () {
-    //NSArray *devices;
-    
-    //Change devices to be mutable array
-    
-    //NSMutableArray *devices;
+ 
     NSMutableArray *_bookArr;
-
-    
-    //NSMutableArray *bookArray;
 
     
 }
@@ -34,82 +27,50 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    //NSMutableArray *bookArray;
-    //NSLog(searchParam);
-
-    
+  
     [self fetchBooksUsingJSON:searchParam];
-    //devices = @[@"ABC", @"iPad",@"iMac", @"iWatch", @"iTV"];
 }
 
 - (void)fetchBooksUsingJSON:(NSString *)searchParam {
-    NSLog(@"Fetching Books");
 
-    
     _bookArr = [NSMutableArray new];
 
-//    NSString *urlString = @"https://itunes.apple.com/search?term=the great gatsby &entity=ebook";
-//    
-    
-    //NSString *searchTermText = searchParam;
-    
-    //NSLog(searchParam);
-    //NSString *searchTermText = @"Harry";
+
     NSString *urlString = [NSString stringWithFormat:@"https://itunes.apple.com/search?term=%@&entity=ebook", searchParam];
     urlString= [urlString stringByReplacingOccurrencesOfString:@" " withString:@"+"];
-    NSLog(urlString);
-
-    //urlString = [urlString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-    //urlString = [urlString stringByAddingPercentEscapesUsingEncoding];
-
-    
-    NSLog(urlString);
-    
-
-
-    //NSString *urlString = @"https://api.letsbuildthatapp.com/jsondecodable/courses";
-    
+ 
     
     NSURL *url = [NSURL URLWithString:urlString];
     
     [[NSURLSession.sharedSession dataTaskWithURL:(url) completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         
-        NSLog(@"Finished fetching books");
+    NSError *err;
         
-       // NSString *dummyString = [[NSString alloc] initWithData:(data) encoding:(NSUTF8StringEncoding)];
-//        
-        //NSLog(@"Dummy string: %@", dummyString);
-        
-        NSError *err;
-        
-        //NSArray *booksJSON = [NSJSONSerialization JSONObjectWithData:(data) options:NSJSONReadingAllowFragments error:(&err)];
-        
-        NSDictionary *booksJSON = [NSJSONSerialization JSONObjectWithData:(data) options:NSJSONReadingAllowFragments error:(&err)];
-        
-        
-        if (err) {
-            NSLog(@"Failed to serialzie into JSON: %@", err);
-            return;
-        }
-        
-        for (NSDictionary *bookDict in booksJSON[@"results"]) {
-            //Book detail should at least the display the title, author, summary and an image.
+    NSDictionary *booksJSON = [NSJSONSerialization JSONObjectWithData:(data) options:NSJSONReadingAllowFragments error:(&err)];
+    
+    
+    if (err) {
+        NSLog(@"Failed to serialzie into JSON: %@", err);
+        return;
+    }
+    
+    for (NSDictionary *bookDict in booksJSON[@"results"]) {
+        //Book detail should at least the display the title, author, summary and an image.
 
-            
-            id trackName = bookDict[@"trackName"];
-            id artistName = bookDict[@"artistName"];
-            id description = bookDict[@"artworkUrl60"];
-            
+        
+        id trackName = bookDict[@"trackName"];
+        id artistName = bookDict[@"artistName"];
+        id description = bookDict[@"artworkUrl60"];
+        
 
-            BookMetadata *bookMetadata = [[BookMetadata alloc]initWithMetadata:bookDict[@"trackName"]
-                                       authorName:bookDict[@"artistName"]
-                                        imageURL:bookDict[@"artworkUrl60"]
-                                          summary:bookDict[@"description"]];
-            
-             [_bookArr addObject:bookMetadata];
-            
-        }
+        BookMetadata *bookMetadata = [[BookMetadata alloc]initWithMetadata:bookDict[@"trackName"]
+                                   authorName:bookDict[@"artistName"]
+                                    imageURL:bookDict[@"artworkUrl60"]
+                                      summary:bookDict[@"description"]];
+        
+         [_bookArr addObject:bookMetadata];
+        
+    }
         
         [self.tableView reloadData];
 
@@ -168,9 +129,6 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
-    // Configure the cell...
-    //cell.textLabel.text = devices[indexPath.row];
-    //cell.textLabel.text = devices[indexPath.row];
     BookMetadata *bookMetadata = ((BookMetadata *)[_bookArr objectAtIndex:indexPath.row]);
     cell.textLabel.text = bookMetadata.bookTitle;
     
